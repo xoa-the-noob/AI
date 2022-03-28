@@ -1,0 +1,21 @@
+tuplelist1 = [
+                    ('parent','Hasib','Rakib'),
+                    ('parent','Rakib','Sohel'),
+                    ('parent','Rakib','Rebeka'),
+                    ('parent','Rashid','Hasib')
+            
+              ]
+
+X=str(input("Grandchild:"))
+
+print('Grandparent:')
+
+i,j=0,0
+
+while(i<=5):
+    if((tuplelist1[i][0] == 'parent')&(tuplelist1[i][2] == X)):
+        for j in range(6):
+            if( (tuplelist1[j][0] == 'parent') & (tuplelist1[i][1] == tuplelist1[j][2]) ):
+                print(tuplelist1[j][1]," ")
+    
+    i = i + 1

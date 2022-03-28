@@ -1,0 +1,91 @@
+pointlist = [
+                    ('A1',1,1),
+                    ('A2',2,1),
+                    ('A3',4,3),
+                    ('A4',5,4)
+              ]
+
+centroid = [ (1,1),
+             (2,1)
+           ]
+centroid1 = [1,1]
+centroid2 = [2,1]
+
+
+i,j=0,0
+temp1,temp2,s=0,0,0
+k=0
+distance2 = []
+distance1 = []
+cluster = []
+tempcluster = []
+
+
+while(1):
+    print(cluster)
+    print(tempcluster)
+    for i in range(4):
+        temp1 = pow( (pow((pointlist[i][1] - centroid1[0]),2) + pow((pointlist[i][2] - centroid1[1]),2)) , 1/2 )
+        temp2 = pow( (pow((pointlist[i][1] - centroid2[0]),2) + pow((pointlist[i][2] - centroid2[1]),2)) , 1/2 )
+        distance1.append(temp1)
+        distance2.append(temp2)
+    print(distance1)
+    print(distance2)
+
+    print(cluster)
+    print(tempcluster)
+
+    
+    cluster.clear()
+    print(tempcluster)
+    for j in range(4):
+        if(distance1[j]<distance2[j]):
+            cluster.append(1)
+        if(distance2[j]<distance1[j]):
+            cluster.append(2)
+
+    print(cluster)
+    print(tempcluster)
+    
+    if( tempcluster == cluster ):
+        print('breaking')
+        break
+    if( tempcluster != cluster ):
+        print('not breaking')
+        centroid1.clear()
+        centroid2.clear()
+        distance1.clear()
+        distance2.clear()
+        x1,y1,x2,y2 = 0,0,0,0
+        cnt1,cnt2 = 0,0
+
+        for k in range(4):
+            if ( cluster[k] == 1 ):
+                x1 += pointlist[k][1]
+                y1 += pointlist[k][2]
+                cnt1 = cnt1+1
+            if ( cluster[k] == 2 ):
+                x2 += pointlist[k][1]
+                y2 += pointlist[k][2]
+                cnt2 = cnt2 + 1
+        centroid1.append(x1/cnt1)
+        centroid1.append(y1/cnt1)
+        centroid2.append(x2/cnt2)
+        centroid2.append(y2/cnt2)
+        print(centroid1)
+        print(centroid2)
+        print(tempcluster)
+        tempcluster.clear()
+        tempcluster = cluster.copy()
+        print(tempcluster)
+        print(cluster)
+        
+    
+
+
+
+
+
+
+  
+
